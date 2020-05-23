@@ -1,0 +1,9 @@
+[submodule "slstatus-custom"]
+	path = slstatus-custom
+	url = https://github.com/ForAzens/slstatus-custom.git
+[submodule "dmenu-custom"]
+	path = dmenu-custom
+	url = https://github.com/ForAzens/dmenu-custom.git
+[submodule "dwm-custom"]
+	path = dwm-custom
+	url = https://github.com/ForAzens/dwm-custom.git
