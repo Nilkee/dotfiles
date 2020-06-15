@@ -30,6 +30,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'joshdick/onedark.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 "Config Section
