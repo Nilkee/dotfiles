@@ -7,6 +7,9 @@ Plug 'xuyuanp/nerdtree-git-plugin'
 
 Plug 'tpope/vim-fugitive'
 
+
+"Commentary plugin
+Plug 'tpope/vim-commentary'
 "Javascript/React
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -52,6 +55,41 @@ set clipboard=unnamedplus
 filetype indent on
 filetype plugin on
 
+let mapleader=","
+
+" Map jk to ESC in insert mode
+inoremap jk <esc>" Disable Esp key in insert mode
+inoremap <esc> <nop>
+
+" Switch between tabs
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
+nnoremap <Leader>6 6gt
+nnoremap <Leader>7 7gt
+nnoremap <Leader>8 8gt
+nnoremap <Leader>9 9gt
+
+" Keep search results at the center of screen
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+" Indentación a 2 espacios
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set shiftround
+set expandtab  " Insertar espacios en lugar de <Tab>s
+
+" Press <leader> Enter to remove search highlights
+noremap <silent> <leader><cr> :noh<cr>
+
 "Linter and fixer
 let g:ale_linters = {}
 let g:ale_linters.rust = ['cargo', 'rustc', 'analyzer']
@@ -68,7 +106,7 @@ let g:ale_sign_error = '✘'
 let g:ale_fix_on_save = 1
 
 let g:rustfmt_autosave = 1
-let g:endwise_no_mappings = 1
+let g:endwise_no_mappings = v:true
 
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
@@ -297,3 +335,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Fix to endwise and coc autocompletion
+inoremap <expr> <Plug>CustomCocCR pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+imap <CR> <Plug>CustomCocCR<Plug>DiscretionaryEnd
