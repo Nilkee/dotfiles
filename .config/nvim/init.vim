@@ -6,7 +6,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 
 Plug 'tpope/vim-fugitive'
-
+Plug 'itchyny/vim-gitbranch'
 
 "Commentary plugin
 Plug 'tpope/vim-commentary'
@@ -59,7 +59,6 @@ let mapleader=","
 
 " Map jk to ESC in insert mode
 inoremap jk <esc>" Disable Esp key in insert mode
-inoremap <esc> <nop>
 
 " Switch between tabs
 nnoremap <Leader>1 1gt
@@ -175,9 +174,35 @@ nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 "nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
+" Lightline config
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'filename' : 'LightlineFilename',
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
+
+function! LightlineFilename()
+ let root = fnamemodify(get(b:, 'gitbranch_path'), ':h:h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
+
+" Fugitive vim
+nnoremap <Leader>gs :Gst<CR>
 
 " Fzf config
 nnoremap <C-p> :FZF<CR>
+nnoremap <Leader>p :Rg<CR>
+
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
