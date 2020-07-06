@@ -1,6 +1,7 @@
 call plug#begin("~/.config/nvim/plugged")
 " Plugin Section
 Plug 'tomasr/molokai'
+Plug 'nanotech/jellybeans.vim'
 "Nerdtree
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
@@ -36,8 +37,13 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 call plug#end()
 
+" Color in tmux
+set background=dark
+
 "Config Section
-set number
+" Relative number
+"
+set nowrap
 set number relativenumber
 set wildmenu
 set lazyredraw
@@ -98,7 +104,7 @@ let g:ale_linters.javascript = ['eslint']
 let g:ale_fixers = {}
 let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
 let g:ale_fixers.ruby = ['rubocop']
-let g:ale_fixers.javascript = ['prettier', 'eslint']
+let g:ale_fixers.javascript = ['eslint']
 let g:ale_javascript_prettier_options = '--arrow-parens avoid'
 let g:ale_sign_warning = '⚠️'
 let g:ale_sign_error = '✘'
@@ -127,7 +133,7 @@ if (empty($TMUX))
 endif
 
 syntax enable
-colorscheme onedark
+colorscheme molokai
 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -176,7 +182,7 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 
 " Lightline config
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
