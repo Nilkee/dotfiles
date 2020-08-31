@@ -14,6 +14,8 @@ Plug 'tpope/vim-commentary'
 "Javascript/React
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 "Ruby / RoR
 Plug 'tpope/vim-endwise'
@@ -36,6 +38,9 @@ Plug 'joshdick/onedark.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 call plug#end()
+
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Color in tmux
 set background=dark
@@ -97,14 +102,16 @@ noremap <silent> <leader><cr> :noh<cr>
 
 "Linter and fixer
 let g:ale_linters = {}
-let g:ale_linters.rust = ['cargo', 'rustc', 'analyzer']
+" let g:ale_linters.rust = ['rustc', 'analyzer']
 let g:ale_linters.ruby = ['rubocop']
 let g:ale_linters.javascript = ['eslint']
+let g:ale_linters.typescript = ['tsserver']
 
 let g:ale_fixers = {}
 let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
 let g:ale_fixers.ruby = ['rubocop']
 let g:ale_fixers.javascript = ['eslint']
+let g:ale_fixers.typescript = ['prettier']
 let g:ale_javascript_prettier_options = '--arrow-parens avoid'
 let g:ale_sign_warning = '⚠️'
 let g:ale_sign_error = '✘'
