@@ -37,6 +37,8 @@ Plug 'joshdick/onedark.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
+
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
@@ -142,18 +144,18 @@ endif
 syntax enable
 colorscheme molokai
 
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
 
 
 " Nerdtree config
@@ -339,7 +341,7 @@ omap ac <Plug>(coc-classobj-a)
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
+" nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
