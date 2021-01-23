@@ -2,9 +2,11 @@ call plug#begin("~/.config/nvim/plugged")
 " Plugin Section
 Plug 'tomasr/molokai'
 Plug 'nanotech/jellybeans.vim'
+
 "Nerdtree
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/vim-gitbranch'
@@ -23,7 +25,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'w0rp/ale'
 
-Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -38,7 +39,9 @@ Plug 'joshdick/onedark.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
+" Docker
+Plug 'ekalinin/dockerfile.vim'
+Plug 'skanehira/docker-compose.vim'
 call plug#end()
 
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
@@ -50,7 +53,7 @@ au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 
 " Color in tmux
-set background=dark
+" set background=dark
 
 "Config Section
 " Relative number
