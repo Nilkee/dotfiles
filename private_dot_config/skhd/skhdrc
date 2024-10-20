@@ -1,0 +1,52 @@
+# Focus Windows
+cmd + ctrl + alt - h : yabai -m window --focus west || yabai -m display --focus west
+cmd + ctrl + alt - j : yabai -m window --focus south || yabai -m display --focus south
+cmd + ctrl + alt - k : yabai -m window --focus north || yabai -m display --focus north
+cmd + ctrl + alt - l : yabai -m window --focus east || yabai -m display --focus east
+
+# Rotate windows in same space
+cmd + ctrl + shift + alt - n : yabai -m query --spaces --space \
+  | jq -re ".index" \
+  | xargs -I{} yabai -m query --windows --space {} \
+  | jq -sre 'add | map(select(."is-minimized"==false)) | sort_by(.display, .frame.y, .frame.x, .id) | . as $array | length as $array_length | index(map(select(."has-focus"==true))) as $has_index | if $has_index > 0 then nth($has_index - 1).id else nth($array_length - 1).id end' \
+  | xargs -I{} yabai -m window --focus {}
+
+cmd + ctrl + shift + alt - p : yabai -m query --spaces --space \
+  | jq -re ".index" \
+  | xargs -I{} yabai -m query --windows --space {} \
+  | jq -sre 'add | map(select(."is-minimized"==false)) | sort_by(.display, .frame.y, .frame.x, .id) | . as $array | length as $array_length | index(map(select(."has-focus"==true))) as $has_index | if $array_length - 1 > $has_index then nth($has_index + 1).id else nth(0).id end' \
+  | xargs -I{} yabai -m window --focus {}
+
+# Maximize window
+cmd + ctrl + shift + alt - f : yabai -m window --toggle zoom-fullscreen
+cmd + ctrl + shift + alt - r : yabai -m space --rotate 90
+cmd + ctrl + shift + alt - v : yabai -m space --mirror y-axis
+cmd + ctrl + shift + alt - s : yabai -m space --mirror x-axis
+
+
+# Moving windows
+cmd + ctrl + shift + alt - h : yabai -m window --swap west || yabai -m window --display west; yabai -m display --focus west
+cmd + ctrl + shift + alt - j : yabai -m window --swap south || yabai -m window --display south; yabai -m display --focus south
+cmd + ctrl + shift + alt - k : yabai -m window --swap north || yabai -m window --display north; yabai -m display --focus north
+cmd + ctrl + shift + alt - l : yabai -m window --swap east || yabai -m window --display east; yabai -m display --focus east
+
+# Move focus container to workspace
+# shift + alt - m : yabai -m window --space last
+# shift + alt - p : yabai -m window --space prev
+# shift + alt - n : yabai -m window --space next
+cmd + ctrl + alt + shift - 1 : yabai -m window --space 1 --focus
+cmd + ctrl + alt + shift - 2 : yabai -m window --space 2 --focus
+cmd + ctrl + alt + shift - 3 : yabai -m window --space 3 --focus
+cmd + ctrl + alt + shift - 4 : yabai -m window --space 4 --focus
+cmd + ctrl + alt + shift - 5 : yabai -m window --space 5 --focus
+cmd + ctrl + alt + shift - 6 : yabai -m window --space 6 --focus
+cmd + ctrl + alt + shift - 7 : yabai -m window --space 7 --focus
+cmd + ctrl + alt + shift - 8 : yabai -m window --space 8 --focus
+cmd + ctrl + alt + shift - 9 : yabai -m window --space 9 --focus
+
+
+# Make window native fullscreen
+cmd + ctrl + shift + alt - f : yabai -m window --toggle zoom-fullscreen
+
+# Reload skhd
+
