@@ -1,12 +1,20 @@
 set fish_greeting # Disable greeting
+
+{{ if eq .chezmoi.os "darwin" -}}
+# macOS 
 eval (/opt/homebrew/bin/brew shellenv)
+export ASDF_DIR="$(brew --prefix asdf)/libexec/"
+source "$(brew --prefix asdf)/libexec/asdf.fish"
+# The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/Users/daniel/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/daniel/Downloads/google-cloud-sdk/path.fish.inc'; end
+{{ else if eq .chezmoi.os "linux" -}}
+# Linux 
+source ~/.asdf/asdf.fish
+{{ end -}}
 
 starship init fish | source
 
-export ASDF_DIR="$(brew --prefix asdf)/libexec/"
-source "$(brew --prefix asdf)/libexec/asdf.fish"
 
-alias nnvim="nix run --extra-experimental-features nix-command --extra-experimental-features flakes github:forazens/neovim-flake"
 alias cat="bat"
 alias ls="lsd"
 alias lg="lazygit"
@@ -19,7 +27,3 @@ set -Ux FZF_DEFAULT_OPTS "\
 
 zoxide init fish | source
 atuin init fish | source
-source "$HOME/.cargo/env.fish"
-
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/daniel/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/daniel/Downloads/google-cloud-sdk/path.fish.inc'; end
