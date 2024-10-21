@@ -19,7 +19,7 @@ auto_setup="false"
 "rocks-git.nvim" = "2.4.2"
 "rocks-config.nvim" = "3.0.0"
 "conform.nvim" = "8.1.0"
-"smart-splits.nvim" = {version = "1.6.0", cmd = "SmartSplitCursorMoveLeft" }
+"smart-splits.nvim" = {version = "1.6.0" }
 nvim-web-devicons = "0.100"
 nvim-lspconfig = { version = "1.0.0", event = "BufEnter" }
 "telescope.nvim" = "scm"
