@@ -9,7 +9,7 @@ require('nvim-treesitter.configs').setup({
   },
   endwise = { enable = true },
   indent = { enable = true },
-  ensure_installed = { "vim", "lua", "javascript", "typescript", "tsx", "html", "css", "json", "bash", "rust", "elixir", "heex", "nix", "toml", "svelte", "go" }
+  ensure_installed = { "vim", "lua", "javascript", "typescript", "tsx", "html", "css", "json", "bash", "rust", "elixir", "heex", "nix", "toml", "svelte", "go", "zig" }
 })
 
 -- Allows to comment JSX
