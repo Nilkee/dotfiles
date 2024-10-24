@@ -1,7 +1,12 @@
 README.md
-{{- if ne .chezmoi.os "darwin" }}
+{{ if ne .chezmoi.os "darwin" }}
 .config/skhd
 .config/yabai
-{{- if ne .chezmoi.os "linux" }}
+{{ end }}
+{{ if ne .chezmoi.os "linux" }}
 .config/foot
-{{- end }}
+{{ end }}
+
+
+
+
