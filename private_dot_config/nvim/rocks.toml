@@ -93,7 +93,7 @@ event = "InsertEnter"
 [plugins."yeet.nvim"]
 git = "samharju/yeet.nvim"
 rev = "v1.2.1"
-cmd = "Yeet"
+event = "BufEnter"
 
 [plugins.harpoon]
 git = "theprimeagen/harpoon"
