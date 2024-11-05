@@ -132,7 +132,6 @@ rev = "v3.9.0"
 [plugins."blink.cmp"]
 git = "saghen/blink.cmp"
 rev = "v0.3.1^{}"
-event = "InsertEnter"
 
 [bundles.treesitter]
 items = [
