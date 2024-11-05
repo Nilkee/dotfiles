@@ -1,0 +1,8 @@
+[core]
+  excludesFile = ~/.gitignore
+
+[user]
+	name = Daniel Castillo
+	email = me@4az.dev
+[includeIf "gitdir:~/Work/"]
+  path = ~/Work/.gitconfig

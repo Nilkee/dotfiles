@@ -1,0 +1,17 @@
+# Node
+npm-debug.log
+.yalc/
+yalc.lock
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# vi
+*~
+
+# General
+log/
+*.log
