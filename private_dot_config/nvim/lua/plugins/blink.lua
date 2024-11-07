@@ -1,13 +1,5 @@
 require("blink.cmp").setup({
-  sources = {
-    { "blink.cmp.sources.lsp",      name = "LSP",     score_offset = 1 },
-    { "blink.cmp.sources.snippets", name = "Snippets", score_offset = -1, keyword_length = 1 },
-    { "blink.cmp.sources.path",     name = "Path",    score_offset = 3,   opts = { get_cwd = vim.uv.cwd } },
-    { "blink.cmp.sources.buffer",   name = "buffer",  keyword_length = 3, score_offset = -3 }
-  },
-  trigger = {
-    completion = {}
-  },
+  keymap = "super-tab",
   highlight = {
     use_nvim_cmp_as_default = true,
   },
