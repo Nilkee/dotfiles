@@ -1,7 +1,7 @@
 local function _1_()
 	return require("conform").format()
 end
-vim.keymap.set({ "n" }, "<leader>cf", _1_, { silent = true })
+vim.keymap.set({ "n" }, "<leader>cf", _1_, { silent = true, desc = "Format code" })
 return {
 	"stevearc/conform.nvim",
 	opts = {

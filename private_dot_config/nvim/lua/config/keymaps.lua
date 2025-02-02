@@ -27,11 +27,11 @@ map({ "n" }, "gl", "$", { silent = true })
 map({ "n" }, "gh", "0", { silent = true })
 
 -- Oopen quickfix and localfix list
-map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+map("n", "<leader>xl", "<cmd>lopen<cr>", { desc ="Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 -- Quickfix list navigation
-map("n", "<C-n>", "<cmd>cnext<CR>zz")
-map("n", "<C-p>", "<cmd>cprev<CR>zz")
+map("n", "<C-j>", "<cmd>cnext<CR>zz")
+map("n", "<C-k>", "<cmd>cprev<CR>zz")
 map("n", "<leader>n", "<cmd>lnext<CR>zz")
 map("n", "<leader>p", "<cmd>lprev<CR>zz")

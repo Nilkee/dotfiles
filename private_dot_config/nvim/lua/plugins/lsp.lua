@@ -12,6 +12,13 @@ return {
 			require("lspconfig").lua_ls.setup({ capabilities = capabilities })
 			require("lspconfig").ruby_lsp.setup({ capabilities = capabilities, filetypes = { "ruby", "eruby" } })
 			require("lspconfig").tailwindcss.setup({ capabilities = capabilities })
+			require("lspconfig").phpactor.setup({
+				capabilities = capabilities,
+				init_options = {
+					["language_server_phpstan.enabled"] = false,
+					["language_server_psalm.enabled"] = false,
+				},
+			})
 
 			-- LSP Commands
 			-- Use LspAttach autocommand to only map the following keys

@@ -48,7 +48,7 @@ return {
 				{ section = "header" },
 				{ section = "keys", gap = 1, padding = 1 },
 				{ section = "startup", padding = 1 },
-				{ section = "terminal", cmd = "pokemon-colorscripts -r --no-title; sleep .1", random = 10, height = 30 },
+				-- { section = "terminal", cmd = "pokemon-colorscripts -r --no-title; sleep .1", random = 10, height = 30 },
 			},
 		},
 	},

@@ -38,8 +38,8 @@ local function _1_()
 			U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
 		},
 	})
-	return require("mini.surround").setup({
-		mappings = { add = "gsa", delete = "gsd", find = "gsf", find_left = "gsf", replace = "gsr" },
-	})
+	-- return require("mini.surround").setup({
+	-- 	mappings = { add = "gsa", delete = "gsd", find = "gsf", find_left = "gsf", replace = "gsr" },
+	-- })
 end
 return { "echasnovski/mini.nvim", config = _1_, version = false }

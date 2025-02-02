@@ -51,5 +51,17 @@ return {
 		config = _1_,
 	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
-	{ "windwp/nvim-ts-autotag", opts = {} },
+	{
+		"windwp/nvim-ts-autotag",
+		ft = {
+			"html",
+			"javascript",
+			"javascriptreact",
+			"json",
+			"jsonc",
+			"typescript",
+			"typescriptreact",
+		},
+		opts = {},
+	},
 }

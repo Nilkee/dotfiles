@@ -1,11 +1,20 @@
 return {
 	"saghen/blink.cmp",
 	-- optional: provides snippets for the snippet source
-	dependencies = "rafamadriz/friendly-snippets",
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		{
+			"L3MON4D3/LuaSnip",
+			version = "v2.*",
+			config = function()
+				require("luasnip.loaders.from_vscode").lazy_load()
+			end,
+		},
+	},
 
 	-- use a release tag to download pre-built binaries
 	version = "*",
-	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+	-- AND/OR build from source, requires nightly: htps://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 	-- build = 'cargo build --release',
 	-- If you use nix, you can build from source using latest nightly rust with:
 	-- build = 'nix run .#build-plugin',
@@ -18,6 +27,7 @@ return {
 		-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
 		-- See the full "keymap" documentation for information on defining your own keymap.
 		keymap = { preset = "super-tab" },
+		snippets = { preset = "luasnip" },
 
 		appearance = {
 			-- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -34,6 +44,22 @@ return {
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},
+		completion = {
+			menu = {
+				draw = {
+					treesitter = { "lsp" },
+					columns = {
+						{ "label", "label_description", gap = 1 },
+						{ "kind_icon", gap = 1, "kind" },
+					},
+				},
+			},
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 200,
+			},
+		},
 	},
+	signature = { enabled = true },
 	opts_extend = { "sources.default" },
 }
