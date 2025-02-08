@@ -3,7 +3,6 @@ local function _1_()
 	require("mini.comment").setup()
 	require("mini.cursorword").setup()
 	require("mini.hipatterns").setup()
-	require("mini.indentscope").setup()
 	require("mini.pairs").setup({
 		modes = { insert = true, command = true, terminal = false },
 		-- skip autopair when next character is one of these

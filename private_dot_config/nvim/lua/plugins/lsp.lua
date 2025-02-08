@@ -2,16 +2,17 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = { "yioneko/nvim-vtsls" },
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("lspconfig.configs")["vtsls"] = require("vtsls").lspconfig
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			require("lspconfig").vtsls.setup({ capabilities = capabilities })
 			require("lspconfig").eslint.setup({ capabilities = capabilities })
-			require("lspconfig").gopls.setup({ capabilities = capabilities })
+			-- require("lspconfig").gopls.setup({ capabilities = capabilities })
 			require("lspconfig").jsonls.setup({ capabilities = capabilities })
 			require("lspconfig").lua_ls.setup({ capabilities = capabilities })
-			require("lspconfig").ruby_lsp.setup({ capabilities = capabilities, filetypes = { "ruby", "eruby" } })
-			require("lspconfig").tailwindcss.setup({ capabilities = capabilities })
+			-- require("lspconfig").ruby_lsp.setup({ capabilities = capabilities, filetypes = { "ruby", "eruby" } })
+			-- require("lspconfig").tailwindcss.setup({ capabilities = capabilities })
 			require("lspconfig").phpactor.setup({
 				capabilities = capabilities,
 				init_options = {
@@ -33,19 +34,8 @@ return {
 
 					local_map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 					local_map("n", "<leader>cl", "<cmd>LspInfo<cr>", { desc = "LspInfo" })
-					local_map("n", "<leader>ci", "<cmd>Telescope import<cr>", { desc = "LspInfo" })
-					local_map("n", "gd", "<cmd>Telescope lsp_definitions<CR>", { desc = "Goto Definition" })
-					local_map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "References" })
-					local_map("n", "gI", "<cmd>Telescope lsp_implementations<CR>", { desc = "Goto Implementation" })
-					local_map("n", "gy", "<cmd>Telescope lsp_typedefs<CR>", { desc = "Goto T[y]pe Definition" })
 					local_map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 					local_map("i", "<c-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-					local_map("n", "<leader>cf", function()
-						require("conform").format({ timeout_ms = 3000, lsp_fallback = true })
-					end, { desc = "Format Document" })
-					local_map("v", "<leader>cf", function()
-						require("conform").format({ timeout_ms = 3000, lsp_fallback = true })
-					end, { desc = "Format Range" })
 					local_map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 					local_map("v", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 					local_map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
@@ -60,14 +50,20 @@ return {
 			end
 		end,
 	},
-	{ "j-hui/fidget.nvim", opts = {} },
+	{ "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "VeryLazy",
+		event = "LspAttach",
 		priority = 1000,
 		config = function()
 			vim.diagnostic.config({ virtual_text = false })
 			return require("tiny-inline-diagnostic").setup()
 		end,
+	},
+	{
+		"folke/ts-comments.nvim",
+		opts = {},
+		event = "VeryLazy",
+		enabled = vim.fn.has("nvim-0.10.0") == 1,
 	},
 }

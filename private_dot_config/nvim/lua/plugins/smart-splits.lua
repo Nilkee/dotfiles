@@ -1,9 +1,13 @@
-vim.keymap.set({ "n" }, "<A-h>", "<CMD>SmartResizeLeft<CR>", { silent = true })
-vim.keymap.set({ "n" }, "<A-j>", "<CMD>SmartResizeDown<CR>", { silent = true })
-vim.keymap.set({ "n" }, "<A-k>", "<CMD>SmartResizeUp<CR>", { silent = true })
-vim.keymap.set({ "n" }, "<A-l>", "<CMD>SmartResizeRight<CR>", { silent = true })
-vim.keymap.set({ "n" }, "<C-h>", "<CMD>SmartCursorMoveLeft<CR>", { silent = true })
-vim.keymap.set({ "n" }, "<C-j>", "<CMD>SmartCursorMoveDown<CR>", { silent = true })
-vim.keymap.set({ "n" }, "<C-k>", "<CMD>SmartCursorMoveUp<CR>", { silent = true })
-vim.keymap.set({ "n" }, "<C-l>", "<CMD>SmartCursorMoveRight<CR>", { silent = true })
-return { "mrjones2014/smart-splits.nvim" }
+return {
+	"mrjones2014/smart-splits.nvim",
+	keys = {
+		{ "<A-h>", "<CMD>SmartResizeLeft<CR>" },
+		{ "<A-j>", "<CMD>SmartResizeDown<CR>" },
+		{ "<A-k>", "<CMD>SmartResizeUp<CR>" },
+		{ "<A-l>", "<CMD>SmartResizeRight<CR>" },
+		{ "<C-h>", "<CMD>SmartCursorMoveLeft<CR>" },
+		{ "<C-j>", "<CMD>SmartCursorMoveDown<CR>" },
+		{ "<C-k>", "<CMD>SmartCursorMoveUp<CR>" },
+		{ "<C-l>", "<CMD>SmartCursorMoveRight<CR>" },
+	},
+}

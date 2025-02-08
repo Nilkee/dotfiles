@@ -1,5 +1,6 @@
 return {
 	"saghen/blink.cmp",
+  event = "LspAttach",
 	-- optional: provides snippets for the snippet source
 	dependencies = {
 		"rafamadriz/friendly-snippets",
@@ -11,7 +12,6 @@ return {
 			end,
 		},
 	},
-
 	-- use a release tag to download pre-built binaries
 	version = "*",
 	-- AND/OR build from source, requires nightly: htps://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -55,7 +55,7 @@ return {
 				},
 			},
 			documentation = {
-				auto_show = true,
+				auto_show = false,
 				auto_show_delay_ms = 200,
 			},
 		},

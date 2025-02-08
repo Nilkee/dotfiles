@@ -14,6 +14,8 @@ return {
 		formatters_by_ft = {
 			fennel = { "fnlfmt" },
 			html = { "prettierd", "prettier" },
+			css = { "stylelint" },
+			scss = { "stylelint" },
 			eruby = { "prettierd", "prettier" },
 			ruby = { "rubocop" },
 			json = { "prettierd", "prettier" },
@@ -24,4 +26,5 @@ return {
 			lua = { "stylua" },
 		},
 	},
+  keys = {}
 }

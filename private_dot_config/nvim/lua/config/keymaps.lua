@@ -20,18 +20,15 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- Search word under cursor
 map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
 
--- File tree
-map({ "n" }, "-", "<CMD>Oil<CR>", { silent = true })
-
 map({ "n" }, "gl", "$", { silent = true })
 map({ "n" }, "gh", "0", { silent = true })
 
 -- Oopen quickfix and localfix list
-map("n", "<leader>xl", "<cmd>lopen<cr>", { desc ="Location List" })
+map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 -- Quickfix list navigation
-map("n", "<C-j>", "<cmd>cnext<CR>zz")
-map("n", "<C-k>", "<cmd>cprev<CR>zz")
-map("n", "<leader>n", "<cmd>lnext<CR>zz")
-map("n", "<leader>p", "<cmd>lprev<CR>zz")
+map("n", "<leader>n", "<cmd>cnext<CR>zz", { desc = "Quickfix next" })
+map("n", "<leader>p", "<cmd>cprev<CR>zz", { desc = "Quickfix previous" })
+-- map("n", "<leader>n", "<cmd>lnext<CR>zz")
+-- map("n", "<leader>p", "<cmd>lprev<CR>zz")

@@ -46,11 +46,13 @@ end
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = { "RRethy/nvim-treesitter-endwise" },
-		event = "VeryLazy",
+		event = { "BufReadPre", "BufNewFile" },
 		config = _1_,
+		dependencies = {
+			"RRethy/nvim-treesitter-endwise",
+			{ "nvim-treesitter/nvim-treesitter-textobjects" },
+		},
 	},
-	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{
 		"windwp/nvim-ts-autotag",
 		ft = {
@@ -63,5 +65,12 @@ return {
 			"typescriptreact",
 		},
 		opts = {},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			enabled = true,
+		},
 	},
 }
