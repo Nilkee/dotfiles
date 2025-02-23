@@ -47,15 +47,36 @@ local dashboard_opts = {
 	},
 }
 
+local function focus_buffer_by_filetype(target_ft)
+	-- Get all windows in current tabpage
+	local wins = vim.api.nvim_tabpage_list_wins(0)
+
+	for _, win in ipairs(wins) do
+		-- Get buffer number for each window
+		local buf = vim.api.nvim_win_get_buf(win)
+		-- Get filetype of the buffer
+		local buf_ft = vim.api.nvim_buf_get_option(buf, "filetype")
+
+		-- If we find a matching filetype in a visible buffer
+		if buf_ft == target_ft then
+			-- Focus the window containing that buffer
+			vim.api.nvim_set_current_win(win)
+			return true
+		end
+	end
+
+	-- Return false if no matching visible buffer was found
+	return false
+end
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
 	opts = {
 		bigfile = { enabled = true },
-		explorer = { enabled = true },
+		-- explorer = { enabled = true },
 		dashboard = dashboard_opts,
-		explorer = { enabled = true },
 		indent = { enabled = true },
 		input = { enabled = true },
 		notifier = {
@@ -78,8 +99,15 @@ return {
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
-    { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
-    { "-", function() Snacks.explorer.open() end, desc = "File Explorer" },
+    -- { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+    -- { "-", function() 
+    --   if vim.bo.filetype == "snacks_picker_list" then
+    --     Snacks.explorer.open()
+    --   else
+    --     Snacks.explorer.reveal()
+    --     focus_buffer_by_filetype("snacks_picker_list")
+    --   end
+    -- end, desc = "Reveal/open file tree" },
     -- find
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
