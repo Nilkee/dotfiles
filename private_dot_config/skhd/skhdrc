@@ -26,6 +26,30 @@ cmd + meh - h : yabai -m display --focus active; ctrl - right
 cmd + meh - l : yabai -m display --focus active; ctrl - left
 
 
+# Change screens with number
+# Focus first space on current display
+lalt - 1 : yabai -m space --focus $(yabai -m query --displays --display | jq -r '.spaces[0]')
+lalt - 2 : yabai -m space --focus $(yabai -m query --displays --display | jq -r '.spaces[1]')
+lalt - 3 : yabai -m space --focus $(yabai -m query --displays --display | jq -r '.spaces[2]')
+lalt - 4 : yabai -m space --focus $(yabai -m query --displays --display | jq -r '.spaces[3]')
+lalt - 5 : yabai -m space --focus $(yabai -m query --displays --display | jq -r '.spaces[4]')
+lalt - 6 : yabai -m space --focus $(yabai -m query --displays --display | jq -r '.spaces[5]')
+lalt - 7 : yabai -m space --focus $(yabai -m query --displays --display | jq -r '.spaces[6]')
+lalt - 8 : yabai -m space --focus $(yabai -m query --displays --display | jq -r '.spaces[7]')
+lalt - 9 : yabai -m space --focus $(yabai -m query --displays --display | jq -r '.spaces[8]')
+
+
+# Move window to first space on current display without following
+alt + shift - 1 : yabai -m window --space $(yabai -m query --displays --display | jq -r '.spaces[0]')
+alt + shift - 2 : yabai -m window --space $(yabai -m query --displays --display | jq -r '.spaces[1]')
+alt + shift - 3 : yabai -m window --space $(yabai -m query --displays --display | jq -r '.spaces[2]')
+alt + shift - 4 : yabai -m window --space $(yabai -m query --displays --display | jq -r '.spaces[3]')
+alt + shift - 5 : yabai -m window --space $(yabai -m query --displays --display | jq -r '.spaces[4]')
+alt + shift - 6 : yabai -m window --space $(yabai -m query --displays --display | jq -r '.spaces[5]')
+alt + shift - 7 : yabai -m window --space $(yabai -m query --displays --display | jq -r '.spaces[6]')
+alt + shift - 8 : yabai -m window --space $(yabai -m query --displays --display | jq -r '.spaces[7]')
+alt + shift - 9 : yabai -m window --space $(yabai -m query --displays --display | jq -r '.spaces[8]')
+
 # Maximize window
 # cmd + ctrl + shift + alt - f : yabai -m window --toggle zoom-fullscreen
 # cmd + ctrl + shift + alt - r : yabai -m space --rotate 90
@@ -46,6 +70,19 @@ cmd + meh - l : yabai -m display --focus active; ctrl - left
 
 # Make window native fullscreen
 meh - f : yabai -m window --toggle zoom-fullscreen
+
+# Open terminal
+
+meh - t : terminal_space=$(yabai -m query --windows | jq '.[] | select(.app=="Ghostty") | .space' | head -n 1); \
+          if [ -n "$terminal_space" ]; then \
+            yabai -m space --focus $terminal_space; \
+          else \
+            open -a Ghostty && \
+            sleep 1 && \
+            yabai -m window --space 1 && \
+            yabai -m space --focus 1 && \
+            yabai -m window --toggle native-fullscreen; \
+          fi
 
 # Reload skhd
 # meh - r : skhd --reload
