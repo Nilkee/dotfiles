@@ -42,7 +42,7 @@ local function select_formatting_frontend()
 	-- Check for eslint configs in current directory
 	for _, config in ipairs(eslint_configs) do
 		if file_exists(cwd .. "/" .. config) then
-			return { "eslint_d" }
+			return { "eslint" }
 		end
 	end
 
@@ -50,7 +50,7 @@ local function select_formatting_frontend()
 end
 
 local function _1_()
-	return require("conform").format()
+	return require("conform").format({ async = true })
 end
 vim.keymap.set({ "n" }, "<leader>cf", _1_, { silent = true, desc = "Format code" })
 return {
@@ -63,6 +63,7 @@ return {
 			lsp_format = "fallback", -- not recommended to change
 		},
 		formatters_by_ft = {
+			gleam = { "gleam" },
 			fennel = { "fnlfmt" },
 			html = select_formatting_frontend,
 			css = { "stylelint" },

@@ -49,6 +49,9 @@ return {
 					["language_server_psalm.enabled"] = false,
 				},
 			})
+			require("lspconfig").gleam.setup({
+				capabilities = capabilities,
+			})
 
 			-- LSP Commands
 			-- Use LspAttach autocommand to only map the following keys
