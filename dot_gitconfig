@@ -3,6 +3,6 @@
 
 [user]
 	name = Daniel Castillo
-	email = me@4az.dev
+	email = me@nilk.ee
 [includeIf "gitdir:~/Work/"]
   path = ~/Work/.gitconfig
