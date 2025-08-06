@@ -68,7 +68,7 @@ return {
 			html = select_formatting_frontend,
 			css = { "stylelint" },
 			scss = { "stylelint" },
-			eruby = { "prettierd", "prettier", "eslint_d" },
+			-- eruby = { lsp_format = "fallback" },
 			ruby = { "rubocop" },
 			json = { "prettierd", "prettier" },
 			javascript = select_formatting_frontend,

@@ -1,8 +1,13 @@
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'TanglingTreats/tmux-everforest' # Adds to the list of plugins
-set -g @tmux-everforest 'dark-medium' # Sets the option to select the theme. Also the default.
+
+set -g @plugin 'dracula/tmux'
+set -g @dracula-show-battery false
+set -g @dracula-show-powerline true
+set -g @dracula-refresh-rate 10
+set -g @dracula-plugins "cpu-usage gpu-usage ram-usage"
+set -g @dracula-show-left-icon "#S"
 
 bind -n M-f run-shell "~/.config/tmux/tsesh.sh --popup"
 
